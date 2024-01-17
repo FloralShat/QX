@@ -11,8 +11,8 @@
       "keys": ["aooov_cookie_neteasemusic"],
       "settings": [
         {
-          "id": "@aooov_cookie_neteasemusic",
-          "name": "Music163 Token",
+          "id": "aooov_cookie_neteasemusic",
+          "name": "Music163 cookie",
           "val": null,
           "type": "textarea",
           "autoGrow": true, 
