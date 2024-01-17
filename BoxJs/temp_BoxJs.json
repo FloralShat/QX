@@ -1,0 +1,37 @@
+{
+  "id": "Aooov.app.sub",
+  "name": "Aooov 脚本订阅",
+  "_description": "描述介绍",
+  "author": "@Aooov",
+  "icon": "https://avatars.githubusercontent.com/u/88471740",
+  "repo": "https://github.com/FloralShat/QX",
+  "apps": [
+    {
+      "id": "应用id", //
+      "name": "应用name",
+      "_comment": "仓库页面显示name(id)"
+      "keys": ["Music163.Cookie","key2"],
+      "_descs_html": [""],
+      "settings": [
+        {
+          "id": "",
+          "name": "",
+          "_val": "true/false/null",
+          "_type": "boolean/checkboxes/textarea/number", 
+          "_placeholder": "光标点击显示文本", 
+          "desc": "",
+          "rows": "",
+          "_autoGrow": "true/false",
+          "items": [{
+            "key": "",
+            "label": ""
+          }]
+        },
+      ],
+      "author": "@Aooov",
+      "repo": "https://github.com/FloralShat/QX",
+      "icons": ["https://raw.githubusercontent.com/Orz-3/task/master/neteasemusic.png", "https://raw.githubusercontent.com/Orz-3/task/master/neteasemusic.png"],
+      "script": "https://raw.githubusercontent.com/FloralShat/QX/main/scripts/neteasemusic/neteasemusic.js"
+    }
+  ]
+}
