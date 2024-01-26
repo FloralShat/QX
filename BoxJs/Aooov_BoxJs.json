@@ -78,6 +78,6 @@
       "repo": "https://github.com/FloralShat/QX",
       "icons": ["https://www.maimemo.com/res/images/site/logo4.png", "https://www.maimemo.com/res/images/site/logo4.png"],
       "script": "https://raw.githubusercontent.com/FloralShat/QX/main/scripts/maimemo/maimemo.js"
-    },
+    }
   ]
 }
