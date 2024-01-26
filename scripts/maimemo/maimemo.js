@@ -1,9 +1,22 @@
+/***********************
+ * 脚本名称：墨墨背单词签到
+ * 脚本作者：@Aooov
+ * 更新日期：2024-01-26
+ * **********************
+
+*******Quantumult X配置*******
+[task_local]
+15 10 * * * https://raw.githubusercontent.com/FloralShat/QX/main/scripts/maimemo/maimemo.js, tag=墨墨背单词签到, enable=true
+
+*/
+
 const $ = new Env('墨墨背单词')
 $.VAL_session = $.getdata('aooov_token_maimemo')
 
 !(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
   await sign()
+  await showmsg()
 })()
   .catch((e) => {
     $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
