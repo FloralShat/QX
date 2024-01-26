@@ -30,7 +30,7 @@ async function sign() {
       }
     })
   })
-  if ($.isSuc) break
+  if ($.isSuc) console.log("Success");
 }
 
 
