@@ -38,6 +38,46 @@
       "repo": "https://github.com/FloralShat/QX",
       "icons": ["https://raw.githubusercontent.com/Orz-3/task/master/neteasemusic.png", "https://raw.githubusercontent.com/Orz-3/task/master/neteasemusic.png"],
       "script": "https://raw.githubusercontent.com/FloralShat/QX/main/scripts/neteasemusic/neteasemusic.js"
-    }
+    },
+    {
+      "id": "bwcj", 
+      "name": "霸王茶姬",
+      "keys": ["aooov_token_bwcj"],
+      "settings": [
+        {
+          "id": "aooov_token_bwcj",
+          "name": "bwcj token",
+          "val": null,
+          "type": "textarea",
+          "autoGrow": true, 
+          "rows": 1,
+          "desc": "手动填入token"
+        }
+      ],
+      "author": "@Aooov",
+      "repo": "https://github.com/FloralShat/QX",
+      "icons": ["https://raw.githubusercontent.com/Guding88/Script/main/bawangchaji/bwcj.png", "https://raw.githubusercontent.com/Guding88/Script/main/bawangchaji/bwcj.png"],
+      "script": "https://raw.githubusercontent.com/FloralShat/QX/main/scripts/bawangchaji/bwcj2024.js"
+    },
+    {
+      "id": "maimemo", 
+      "name": "墨墨背单词",
+      "keys": ["aooov_token_maimemo"],
+      "settings": [
+        {
+          "id": "aooov_token_maimemo",
+          "name": "maimemo token",
+          "val": null,
+          "type": "textarea",
+          "autoGrow": true, 
+          "rows": 1,
+          "desc": "手动填入token"
+        }
+      ],
+      "author": "@Aooov",
+      "repo": "https://github.com/FloralShat/QX",
+      "icons": ["https://www.maimemo.com/res/images/site/logo4.png", "https://www.maimemo.com/res/images/site/logo4.png"],
+      "script": "https://raw.githubusercontent.com/FloralShat/QX/main/scripts/maimemo/maimemo.js"
+    },
   ]
 }
