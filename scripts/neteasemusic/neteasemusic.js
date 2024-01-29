@@ -89,8 +89,8 @@ async function signMusicApp() {
       }
       $.http.post(url, (error, response, rsdata) => {
         try {
-          $.isMusicAppSuc = JSON.parse(rsdata).code === -2
-          $.log(`[App] 第 ${signIdx + 1} 次: ${data}`)
+          $.isMusicAppSuc = JSON.parse(rsdata).code === 200
+          $.log(`[MusicApp] 第 ${signIdx + 1} 次: ${rsdata}`)
         } catch (e) {
           $.isMusicApp = false
           $.log(`❗️ ${$.name}, 执行失败!`, ` error = ${error || e}`, `response = ${JSON.stringify(response)}`, '')
