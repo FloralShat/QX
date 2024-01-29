@@ -1,6 +1,7 @@
 const $ = new Env('网易云音乐')
 $.VAL_session = $.getdata('aooov_cookie_neteasemusic')
-$.CFG_retryCnt = ($.getdata('CFG_neteasemusic_retryCnt') || '10') * 1
+$.VAL_data = $.getdata('aooov_data_neteasemusic')
+$.CFG_retryCnt = ($.getdata('CFG_neteasemusic_retryCnt') || '2') * 1
 $.CFG_retryInterval = ($.getdata('CFG_neteasemusic_retryInterval') || '500') * 1
 
 !(async () => {
@@ -8,6 +9,7 @@ $.CFG_retryInterval = ($.getdata('CFG_neteasemusic_retryInterval') || '500') * 1
   init()
   await signweb()
   await signapp()
+  await signMusicApp()
   await getInfo()
   await showmsg()
 })()
@@ -71,6 +73,37 @@ async function signapp() {
   }
 }
 
+async function signMusicApp() {
+  for (let signIdx = 0; signIdx < $.CFG_retryCnt; signIdx++) {
+    await new Promise((resove) => {
+      const url = { 
+        url: `https://interface.music.163.com/weapi/vip-center-bff/task/sign`, 
+        headers: {
+          'Cookie':$.Cookie,
+          'Host':'music.163.com',
+          'netease_webkit_context': '{"webViewId":"5205340160","href":"https:\\/\\/music.163.com\\/premium\\/m\\/portal?nm_style=sbt&bounces=false&referer=mymusic-icon","newebkit":1}',
+          'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1'
+        }
+        params = {'csrf_token': '387ad5cec9b6482e0c5aeae7e8cb05f2'}
+        data = $.VAL_data
+      }
+      $.http.post(url, (error, response, rsdata) => {
+        try {
+          $.isMusicAppSuc = JSON.parse(rsdata).code === -2
+          $.log(`[App] 第 ${signIdx + 1} 次: ${data}`)
+        } catch (e) {
+          $.isMusicApp = false
+          $.log(`❗️ ${$.name}, 执行失败!`, ` error = ${error || e}`, `response = ${JSON.stringify(response)}`, '')
+        } finally {
+          resove()
+        }
+      })
+    })
+    await new Promise($.wait($.CFG_retryInterval))
+    if ($.isMusicApp) break
+  }
+}
+
 function getInfo() {
   if (!$.isNewCookie) return
   return new Promise((resove) => {
@@ -90,6 +123,7 @@ function showmsg() {
   return new Promise((resove) => {
     $.subt = $.isWebSuc ? 'PC: 成功' : 'PC: 失败'
     $.subt += $.isAppSuc ? ', APP: 成功' : ', APP: 失败'
+    $.subt += $.isMusicApp ? ', MusicAPP: 成功' : ', MusicAPP: 失败'
     if ($.isNewCookie && $.userInfo) {
       $.desc = `等级: ${$.userInfo.data.level}, 听歌: ${$.userInfo.data.nowPlayCount} => ${$.userInfo.data.nextPlayCount} 升级 (首)`
       $.desc = $.userInfo.data.level === 10 ? `等级: ${$.userInfo.data.level}, 你的等级已爆表!` : $.desc
