@@ -20,6 +20,15 @@
           "desc": "保存cookie"
         },
         {
+          "id": "aooov_data_neteasemusic",
+          "name": "Music163 data",
+          "val": null,
+          "type": "textarea",
+          "autoGrow": false, 
+          "rows": 3,
+          "desc": "手动填入params和encSecKey"
+        },
+        {
           "id": "CFG_neteasemusic_retryCnt",
           "name": "重试次数",
           "val": 10,
