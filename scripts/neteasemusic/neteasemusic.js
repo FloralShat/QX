@@ -87,7 +87,7 @@ async function signMusicApp() {
         params: {'csrf_token': '387ad5cec9b6482e0c5aeae7e8cb05f2'},
         data:$.VAL_data
       }
-      $.http.post(url, (error, response, rsdata) => {
+      $.post(url, (error, response, rsdata) => {
         try {
           $.isMusicAppSuc = JSON.parse(rsdata).code === 200
           $.log(`[MusicApp] 第 ${signIdx + 1} 次: ${rsdata}`)
