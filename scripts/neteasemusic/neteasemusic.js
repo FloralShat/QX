@@ -83,9 +83,9 @@ async function signMusicApp() {
           'Host':'music.163.com',
           'netease_webkit_context': '{"webViewId":"5205340160","href":"https:\\/\\/music.163.com\\/premium\\/m\\/portal?nm_style=sbt&bounces=false&referer=mymusic-icon","newebkit":1}',
           'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Mobile/15E148 Safari/604.1'
-        }
-        params = {'csrf_token': '387ad5cec9b6482e0c5aeae7e8cb05f2'}
-        data = $.VAL_data
+        },
+        params: {'csrf_token': '387ad5cec9b6482e0c5aeae7e8cb05f2'},
+        data:$.VAL_data
       }
       $.http.post(url, (error, response, rsdata) => {
         try {
