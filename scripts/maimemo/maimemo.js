@@ -1,7 +1,7 @@
 /***********************
  * 脚本名称：墨墨背单词签到
  * 脚本作者：@Aooov
- * 更新日期：2024-01-26
+ * 更新日期：2025-07-02
  * **********************
 
 *******Quantumult X配置*******
@@ -13,9 +13,18 @@
 const $ = new Env('墨墨背单词')
 $.VAL_session = $.getdata('aooov_token_maimemo')
 
+// 将aooov_token_maimemo按@分割
+if ($.VAL_session) {
+  $.VAL_session = $.VAL_session.split('@')
+}
+
 !(async () => {
   $.log('', `🔔 ${$.name}, 开始!`, '')
-  await sign()
+  // 轮流对$.VAL_session的元素循环执行sign()
+  for (let i = 0; i < $.VAL_session.length; i++) {
+    await sign($.VAL_session[i])
+    $.log(`签到第${i+1}个账号`)
+  }
   await showmsg()
 })()
   .catch((e) => {
@@ -26,10 +35,10 @@ $.VAL_session = $.getdata('aooov_token_maimemo')
   })
 
 
-async function sign() {
+async function sign(session) {
   await new Promise((resove) => {
     const url = { url: `https://www.maimemo.com/api/v1/sign/sign`, headers: {} }
-    url.headers['token'] = $.VAL_session
+    url.headers['token'] = session
     url.headers['Host'] = 'www.maimemo.com'
     url.headers['User-Agent'] = 'MaiMemo/5.2.31_7615 iOS/16.7.2 Device/iPhone12,1 (ARM_64) Resolution/828x1792 RAM/3.76 ROM/119.15 DId/0b9310e265f8cb742a1f8798771eeef7 InstallId/f67db867a54b24b663c88a5a39ab1a8f DeviceName/iPhone Jbv/NIL AFNetworking/4.0.1 Timezone/Asia%2FShanghai+08:00 Theme/Day'
     $.post(url, (error, response, data) => {
